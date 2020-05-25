@@ -5,8 +5,7 @@
 #if [[ "$PATH" != *"$PYTHON_BIN_DIR"* ]]; then
 #    export PYTHON_BIN_DIR=$(PYTHON_BIN_DIR):$PATH
 #fi
-
-export PATH=$(dirname @PYTHON_EXECUTABLE@):$PATH
+#export PATH=$(dirname @PYTHON_EXECUTABLE@):$PATH
 
 # This var is used for locating python cfg and JSON files in the project directory.
 export HPSTR_BASE=@PROJECT_SOURCE_DIR@
