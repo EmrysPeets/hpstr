@@ -1,5 +1,13 @@
 #!/bin/bash 
 
+# Add Python interpreter dir to the PATH, if necessary
+#export PYTHON_BIN_DIR=$(dirname @PYTHON_EXECUTABLE@)
+#if [[ "$PATH" != *"$PYTHON_BIN_DIR"* ]]; then
+#    export PYTHON_BIN_DIR=$(PYTHON_BIN_DIR):$PATH
+#fi
+
+export PATH=$(dirname @PYTHON_EXECUTABLE@):$PATH
+
 # This var is used for locating python cfg and JSON files in the project directory.
 export HPSTR_BASE=@PROJECT_SOURCE_DIR@
 
@@ -12,10 +20,8 @@ export PATH=@CMAKE_INSTALL_PREFIX@/bin:$PATH
 # Set load library path.
 export LD_LIBRARY_PATH=@CMAKE_INSTALL_PREFIX@/lib:@LCIO_DIR@/lib:$LD_LIBRARY_PATH
 
-# Setup ROOT if necessary.
-if [ ! -v ROOTSYS ]; then
-    . @ROOT_DIR@/../bin/thisroot.sh
-fi
+# Setup ROOT. 
+. @ROOT_DIR@/../bin/thisroot.sh
 
 # Uncomment to debug env setup.
 #echo HPSTR_BASE=$HPSTR_BASE
